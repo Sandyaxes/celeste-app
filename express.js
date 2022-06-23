@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 
 const crypto = require('crypto');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
@@ -184,7 +184,6 @@ app.post('/payment', async (req, res)=>{
   }
 
   let payment = await axios(options).catch(function (error){console.log(error)});
-  console.log(payment.data);
   res.send(payment.data);
 
 });
